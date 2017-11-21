@@ -35,4 +35,22 @@ describe GildedRose do
       end
     end
   end
+
+  describe 'Sulfuras' do
+    let(:gilded_rose) { GildedRose.new([sulfuras]) }
+    let(:sulfuras) { Item.new('Sulfuras, Hand of Ragnaros', 5, 80) }
+    context 'when it is not passed its sell by date' do
+      it 'never changes in quality' do
+        expect { gilded_rose.update_quality }.not_to change { sulfuras.quality }
+      end
+    end
+
+    context 'when it hits the sell by date' do
+      it 'never changes in quality'
+    end
+
+    context 'when it is passed its sell by date' do
+      it 'never changes in quality'
+    end
+  end
 end
