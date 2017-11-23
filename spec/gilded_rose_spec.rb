@@ -60,4 +60,20 @@ describe GildedRose do
       expect { gilded_rose.update_quality }.not_to change { sulfuras.quality }
     end
   end
+
+  describe 'Normal Item' do
+    let(:gilded_rose) { GildedRose.new([normal_item]) }
+    
+    context 'when the item is not passed its sell by date' do
+      let(:normal_item) { Item.new('Normal Item', 20, 30) }
+      
+      it 'degrades in quality by 1' do
+        expect { gilded_rose.update_quality }.to change { normal_item.quality }.by -1
+      end
+
+      it 'reduces the number of days left to sell it' do
+        expect { gilded_rose.update_quality }.to change { normal_item.sell_in }.by -1
+      end
+    end
+  end
 end
