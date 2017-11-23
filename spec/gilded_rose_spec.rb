@@ -7,11 +7,13 @@ describe GildedRose do
       let(:aged_brie) { Item.new('Aged Brie', 20, 1) }
       
       it 'increases in quality' do
-        expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 1
+        expect { gilded_rose.update_quality }
+          .to change { aged_brie.quality }.by 1
       end
 
       it 'reduces the number of days left to sell it' do
-        expect { gilded_rose.update_quality }.to change { aged_brie.sell_in }.by -1
+        expect { gilded_rose.update_quality }
+          .to change { aged_brie.sell_in }.by -1
       end
     end
 
@@ -19,11 +21,13 @@ describe GildedRose do
       let(:aged_brie) { Item.new('Aged Brie', 0, 1) }
 
       it 'increases in quality twice as fast' do
-        expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 2
+        expect { gilded_rose.update_quality }
+          .to change { aged_brie.quality }.by 2
       end
 
       it 'reduces the number of days left to sell it' do
-        expect { gilded_rose.update_quality }.to change { aged_brie.sell_in }.by -1
+        expect { gilded_rose.update_quality }
+          .to change { aged_brie.sell_in }.by -1
       end
     end
 
@@ -31,11 +35,13 @@ describe GildedRose do
       let(:aged_brie) { Item.new('Aged Brie', -1, 1) }
       
       it 'increases in quality twice as fast' do
-        expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 2
+        expect { gilded_rose.update_quality }
+          .to change { aged_brie.quality }.by 2
       end
 
       it 'reduces the number of days left to sell it' do
-        expect { gilded_rose.update_quality }.to change { aged_brie.sell_in }.by -1
+        expect { gilded_rose.update_quality }
+          .to change { aged_brie.sell_in }.by -1
       end
     end
 
@@ -43,7 +49,8 @@ describe GildedRose do
       let(:aged_brie) { Item.new('Aged Brie', 2, 50) }
       
       it 'does not change the quality' do
-        expect { gilded_rose.update_quality }.not_to change { aged_brie.quality }
+        expect { gilded_rose.update_quality }
+          .not_to change { aged_brie.quality }
       end
     end
   end
@@ -68,11 +75,13 @@ describe GildedRose do
       let(:normal_item) { Item.new('Normal Item', 20, 30) }
       
       it 'degrades in quality by 1' do
-        expect { gilded_rose.update_quality }.to change { normal_item.quality }.by -1
+        expect { gilded_rose.update_quality }
+          .to change { normal_item.quality }.by -1
       end
 
       it 'reduces the number of days left to sell it' do
-        expect { gilded_rose.update_quality }.to change { normal_item.sell_in }.by -1
+        expect { gilded_rose.update_quality }
+          .to change { normal_item.sell_in }.by -1
       end
 
       context 'when the quality is 0' do
@@ -88,11 +97,13 @@ describe GildedRose do
     context 'when the hits its sell by date' do
       let(:normal_item) { Item.new('Normal Item', 0, 10) }
       it 'degrades the quality twice as fast' do
-        expect { gilded_rose.update_quality }.to change { normal_item.quality }. by -2
+        expect { gilded_rose.update_quality }
+          .to change { normal_item.quality }. by -2
       end
 
       it 'reduces the number of days left to sell by 1' do
-        expect { gilded_rose.update_quality }.to change { normal_item.sell_in }. by -1
+        expect { gilded_rose.update_quality }
+          .to change { normal_item.sell_in }. by -1
       end
     end
   end
