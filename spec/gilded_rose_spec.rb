@@ -9,6 +9,10 @@ describe GildedRose do
       it 'increases in quality' do
         expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 1
       end
+
+      it 'reduces the number of days left to sell it' do
+        expect { gilded_rose.update_quality }.to change { aged_brie.sell_in }.by -1
+      end
     end
 
     context 'when it hits the sell by date' do
@@ -17,6 +21,10 @@ describe GildedRose do
       it 'increases in quality twice as fast' do
         expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 2
       end
+
+      it 'reduces the number of days left to sell it' do
+        expect { gilded_rose.update_quality }.to change { aged_brie.sell_in }.by -1
+      end
     end
 
     context 'when it is passed its sell by date' do
@@ -24,6 +32,10 @@ describe GildedRose do
       
       it 'increases in quality twice as fast' do
         expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 2
+      end
+
+      it 'reduces the number of days left to sell it' do
+        expect { gilded_rose.update_quality }.to change { aged_brie.sell_in }.by -1
       end
     end
 
