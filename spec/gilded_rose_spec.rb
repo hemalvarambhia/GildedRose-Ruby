@@ -72,6 +72,13 @@ describe GildedRose do
       it 'increases in quality by 1' do
         expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 1
       end
+
+      context 'when the item quality is 50' do
+        let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 12, 50) }
+        it 'does not increase in quality' do
+          expect { gilded_rose.update_quality }.not_to change { backstage_pass.quality }.from 50
+        end
+      end
     end
 
     context 'when there exactly 10 days left until the concert' do
