@@ -98,5 +98,18 @@ describe GildedRose do
           .to change { normal_item.sell_in }. by -1
       end
     end
+
+    context 'when it is passed its sell by date' do
+      let(:normal_item) { Item.new('Normal Item', -1, 10) }
+      it 'degrades the quality twice as fast' do
+        expect { gilded_rose.update_quality }
+          .to change { normal_item.quality }. by -2
+      end
+
+      it 'reduces the number of days left to sell by 1' do
+        expect { gilded_rose.update_quality }
+          .to change { normal_item.sell_in }. by -1
+      end
+    end
   end
 end
