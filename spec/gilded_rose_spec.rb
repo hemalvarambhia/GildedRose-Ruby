@@ -87,6 +87,14 @@ describe GildedRose do
       it 'increases the quality by 2' do
         expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 2
       end
+
+      context 'and the quality is 49' do
+        let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 49) }
+
+        it 'changes the quality to 50' do
+          expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
+        end        
+      end
     end
 
     context 'when there are between 10 and 6 days left until the concert' do
@@ -95,6 +103,14 @@ describe GildedRose do
       it 'increases the quality by 2' do
         expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 2
       end
+
+      context 'and the quality is 49' do
+        let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 8, 49) }
+
+        it 'changes the quality to 50' do
+          expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
+        end        
+      end
     end
 
     context 'when there are 5 days left until the concert' do
@@ -102,6 +118,14 @@ describe GildedRose do
 
       it 'increases the quality by 2' do
         expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 3
+      end
+
+      context 'and the quality is 49' do
+        let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 49) }
+
+        it 'changes the quality to 50' do
+          expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
+        end        
       end
     end
 
