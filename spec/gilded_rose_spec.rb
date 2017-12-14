@@ -35,6 +35,15 @@ describe GildedRose do
         expect { gilded_rose.update_quality }
           .to change { aged_brie.quality }.by 2
       end
+
+      context 'and the quality is 50' do
+        let(:aged_brie) { Item.new('Aged Brie', -1, 50) }
+
+        it "doesn't change the quality" do
+          expect { gilded_rose.update_quality }
+            .not_to change { aged_brie.quality }
+        end
+      end
     end
 
     context 'given the quality is 50' do
@@ -203,6 +212,15 @@ describe GildedRose do
       it 'reduces the number of days left to sell by 1' do
         expect { gilded_rose.update_quality }
           .to change { normal_item.sell_in }. by -1
+      end
+
+      context 'and the quality is already 0' do
+        let(:normal_item) { Item.new('Normal Item', -1, 0) }
+
+        it 'remains at 0' do
+          expect { gilded_rose.update_quality }
+            .not_to change { normal_item.quality }.from 0
+        end
       end
     end
   end
