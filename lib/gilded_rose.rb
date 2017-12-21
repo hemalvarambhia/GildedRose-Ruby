@@ -9,18 +9,12 @@ class GildedRose
       if item.name == "Aged Brie" || item.name == "Backstage passes to a TAFKAL80ETC concert"
         increase_quality_of(item)
         if item.name == "Backstage passes to a TAFKAL80ETC concert"
-          if item.sell_in < 11
-            increase_quality_of(item)
-          end
-          if item.sell_in < 6
-            increase_quality_of(item)
-          end
+          increase_quality_of(item) if item.sell_in < 11
+          increase_quality_of(item) if item.sell_in < 6
         end
       else
-        if item.quality > 0
-          unless item.name == "Sulfuras, Hand of Ragnaros"
-            item.quality -= 1
-          end
+        unless item.name == "Sulfuras, Hand of Ragnaros"
+          item.quality -= 1 if item.quality > 0
         end
       end
       unless item.name == "Sulfuras, Hand of Ragnaros"
