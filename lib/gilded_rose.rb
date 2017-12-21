@@ -46,6 +46,8 @@ class GildedRose
     end
   end
 
+  private
+  
   def increase_quality_of(item)
     if item.quality < 50
       item.quality += 1
