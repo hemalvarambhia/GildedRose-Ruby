@@ -11,11 +11,10 @@ describe 'Aged Brie' do
   end
 
   context 'when it is not passed its sell by date' do
-    let(:aged_brie) { Item.new('Aged Brie', 20, 1) }
+    let(:aged_brie) { an_aged_brie(sell_in: 20) }
 
     it 'increases in quality by 1' do
-      expect { gilded_rose.update_quality }
-        .to change { aged_brie.quality }.by 1
+      expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 1
     end
   end
 
