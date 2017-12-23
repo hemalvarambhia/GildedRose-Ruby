@@ -3,7 +3,7 @@ require 'gilded_rose'
 
 describe 'Aged Brie' do
   let(:gilded_rose) { GildedRose.new([aged_brie]) }
-  let(:aged_brie) { Item.new('Aged Brie', 4, rand(50)) }
+  let(:aged_brie) { an_aged_brie }
   
   it 'reduces the number of days left to sell it' do
     expect { gilded_rose.update_quality }
@@ -53,5 +53,11 @@ describe 'Aged Brie' do
       expect { gilded_rose.update_quality }
         .not_to change { aged_brie.quality }
     end
+  end
+
+  private
+  
+  def an_aged_brie(sell_in: 4, quality: rand(0..50))
+    Item.new('Aged Brie', sell_in, quality)
   end
 end
