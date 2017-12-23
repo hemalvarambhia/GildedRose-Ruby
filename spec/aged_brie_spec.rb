@@ -19,16 +19,15 @@ describe 'Aged Brie' do
   end
 
   context 'when it hits the sell by date' do
-    let(:aged_brie) { Item.new('Aged Brie', 0, 1) }
+    let(:aged_brie) { an_aged_brie(sell_in: 0) }
 
     it 'increases in quality twice as fast' do
-      expect { gilded_rose.update_quality }
-        .to change { aged_brie.quality }.by 2
+      expect { gilded_rose.update_quality }.to change { aged_brie.quality }.by 2
     end
   end
 
   context 'when it is passed its sell by date' do
-    let(:aged_brie) { Item.new('Aged Brie', -1, 1) }
+    let(:aged_brie) { an_aged_brie(sell_in: -1) }
 
     it 'increases in quality twice as fast' do
       expect { gilded_rose.update_quality }
@@ -36,7 +35,7 @@ describe 'Aged Brie' do
     end
 
     context 'and the quality is 50' do
-      let(:aged_brie) { Item.new('Aged Brie', -1, 50) }
+      let(:aged_brie) { an_aged_brie(sell_in: -1, quality: 50) }
 
       it "doesn't change the quality" do
         expect { gilded_rose.update_quality }
