@@ -18,7 +18,7 @@ class GildedRose
 
       item.sell_in = item.sell_in - 1 unless item.name == "Sulfuras, Hand of Ragnaros"
 
-      if item.sell_in < 0
+      if expired?(item)
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
             if item.name != "Sulfuras, Hand of Ragnaros"
@@ -35,6 +35,10 @@ class GildedRose
   end
 
   private
+
+  def expired?(item)
+    item.sell_in < 0
+  end
   
   def increase_quality_of(item)
     if item.quality < 50
