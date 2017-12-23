@@ -13,13 +13,11 @@ class GildedRose
           increase_quality_of(item) if item.sell_in < 6
         end
       else
-        unless item.name == "Sulfuras, Hand of Ragnaros"
-          reduce_quality_of(item)
-        end
+        reduce_quality_of(item) unless item.name == "Sulfuras, Hand of Ragnaros"
       end
-      unless item.name == "Sulfuras, Hand of Ragnaros"
-        item.sell_in = item.sell_in - 1
-      end
+
+      item.sell_in = item.sell_in - 1 unless item.name == "Sulfuras, Hand of Ragnaros"
+
       if item.sell_in < 0
         if item.name != "Aged Brie"
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
