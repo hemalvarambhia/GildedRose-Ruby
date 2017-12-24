@@ -3,7 +3,7 @@ require 'gilded_rose'
 
 describe 'Backstage passes to a TAFKAL80ETC concert' do
   let(:gilded_rose) { GildedRose.new([backstage_pass]) }
-  let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 12, 10) }
+  let(:backstage_pass) { a_backstage_pass }
 
   it 'reduces the number of days left to sell it' do
     expect { gilded_rose.update_quality }.to change { backstage_pass.sell_in }.by -1
@@ -92,5 +92,11 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     it 'is worth nothing' do
       expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to 0
     end
+  end
+
+  private
+
+  def a_backstage_pass(sell_in: 12, quality: 10)
+    Item.new('Backstage passes to a TAFKAL80ETC concert', sell_in, quality)
   end
 end
