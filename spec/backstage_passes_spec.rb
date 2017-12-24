@@ -19,7 +19,8 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     end
 
     context 'when the item quality is 50' do
-      let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 12, 50) }
+      let(:backstage_pass) { a_backstage_pass(quality: 50) }
+      
       it 'does not increase in quality' do
         expect { gilded_rose.update_quality }.not_to change { backstage_pass.quality }.from 50
       end
@@ -27,14 +28,14 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
   end
 
   context 'when there exactly 10 days left until the concert' do
-    let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 10) }
+    let(:backstage_pass) { a_backstage_pass(sell_in: 10) }
 
     it 'increases the quality by 2' do
       expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 2
     end
 
     context 'and the quality is 49' do
-      let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 49) }
+      let(:backstage_pass) { a_backstage_pass(sell_in: 10, quality: 49) }
 
       it 'changes the quality to 50' do
         expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
@@ -43,14 +44,14 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
   end
 
   context 'when there are between 10 and 6 days left until the concert' do
-    let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 8, 10) }
+    let(:backstage_pass) { a_backstage_pass(sell_in: 8) }
 
     it 'increases the quality by 2' do
       expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 2
     end
 
     context 'and the quality is 49' do
-      let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 8, 49) }
+      let(:backstage_pass) { a_backstage_pass(sell_in: 8, quality: 49) }
 
       it 'changes the quality to 50' do
         expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
@@ -59,7 +60,7 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
   end
 
   context 'when there are 5 days left until the concert' do
-    let(:backstage_pass) { Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 10) }
+    let(:backstage_pass) { a_backstage_pass(sell_in: 5) }
 
     it 'increases the quality by 2' do
       expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 3
