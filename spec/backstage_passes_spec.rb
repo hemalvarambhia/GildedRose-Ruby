@@ -22,7 +22,9 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
       let(:backstage_pass) { a_backstage_pass(quality: 50) }
       
       it 'does not increase in quality' do
-        expect { gilded_rose.update_quality }.not_to change { backstage_pass.quality }.from 50
+        expect { gilded_rose.update_quality }.not_to(
+          change { backstage_pass.quality }.from 50
+        )
       end
     end
   end
@@ -31,14 +33,18 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     let(:backstage_pass) { a_backstage_pass(sell_in: 10) }
 
     it 'increases the quality by 2' do
-      expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 2
+      expect { gilded_rose.update_quality }.to(
+        change { backstage_pass.quality }.by 2
+      )
     end
 
     context 'and the quality is 49' do
       let(:backstage_pass) { a_backstage_pass(sell_in: 10, quality: 49) }
 
       it 'changes the quality to 50' do
-        expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
+        expect { gilded_rose.update_quality }.to(
+          change { backstage_pass.quality }.to(50)
+        )
       end        
     end
   end
@@ -47,14 +53,18 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     let(:backstage_pass) { a_backstage_pass(sell_in: 8) }
 
     it 'increases the quality by 2' do
-      expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 2
+      expect { gilded_rose.update_quality }.to(
+        change { backstage_pass.quality }.by 2
+      )
     end
 
     context 'and the quality is 49' do
       let(:backstage_pass) { a_backstage_pass(sell_in: 8, quality: 49) }
 
       it 'changes the quality to 50' do
-        expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
+        expect { gilded_rose.update_quality }.to(
+          change { backstage_pass.quality }.to(50)
+        )
       end        
     end
   end
@@ -63,14 +73,18 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     let(:backstage_pass) { a_backstage_pass(sell_in: 5) }
 
     it 'increases the quality by 2' do
-      expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 3
+      expect { gilded_rose.update_quality }.to(
+        change { backstage_pass.quality }.by 3
+      )
     end
 
     context 'and the quality is 49' do
       let(:backstage_pass) { a_backstage_pass(sell_in: 5, quality: 49) }
 
       it 'changes the quality to 50' do
-        expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to(50)
+        expect { gilded_rose.update_quality }.to(
+          change { backstage_pass.quality }.to(50)
+        )
       end        
     end
   end
@@ -79,7 +93,9 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     let(:backstage_pass) { a_backstage_pass(sell_in: 3) }
 
     it 'increases the quality by 2' do
-      expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.by 3
+      expect { gilded_rose.update_quality }.to(
+        change { backstage_pass.quality }.by 3
+      )
     end
   end
 
@@ -87,7 +103,9 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     let(:backstage_pass) { a_backstage_pass(sell_in: 0) }
 
     it 'reduces the quality to 0' do
-      expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to 0
+      expect { gilded_rose.update_quality }.to(
+        change { backstage_pass.quality }.to 0
+      )
     end
   end
 
@@ -95,7 +113,9 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
     let(:backstage_pass) { a_backstage_pass(sell_in: -2) }
 
     it 'is worth nothing' do
-      expect { gilded_rose.update_quality }.to change { backstage_pass.quality }.to 0
+      expect { gilded_rose.update_quality }.to(
+        change { backstage_pass.quality }.to 0
+      )
     end
   end
 
