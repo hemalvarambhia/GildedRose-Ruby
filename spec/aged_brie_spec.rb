@@ -45,8 +45,8 @@ describe 'Aged Brie' do
   end
 
   context 'given the quality is 50' do
-    let(:aged_brie) { Item.new('Aged Brie', 2, 50) }
-
+    let(:aged_brie) { an_aged_brie(quality: 50) }
+    
     it 'does not change the quality' do
       expect { gilded_rose.update_quality }
         .not_to change { aged_brie.quality }
