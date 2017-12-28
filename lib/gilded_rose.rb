@@ -10,13 +10,9 @@ class GildedRose
       item.sell_in = item.sell_in - 1
       case item.name
       when 'Backstage passes to a TAFKAL80ETC concert'
-        increase_quality_of(item)
-        increase_quality_of(item) if item.sell_in < 11
-        increase_quality_of(item) if item.sell_in < 6
-        item.quality = 0 if expired?(item)
+        update_backstage_passes(item)
       when "Aged Brie"
-        increase_quality_of(item)
-        increase_quality_of(item) if expired?(item)
+        update_aged_brie(item)
       else
         reduce_quality_of(item)
         reduce_quality_of(item) if expired?(item)
@@ -38,6 +34,18 @@ class GildedRose
 
   def reduce_quality_of(item)
     item.quality -= 1 if item.quality > 0
+  end
+
+  def update_backstage_passes(item)
+    increase_quality_of(item)
+    increase_quality_of(item) if item.sell_in < 11
+    increase_quality_of(item) if item.sell_in < 6
+    item.quality = 0 if expired?(item)
+  end
+
+  def update_aged_brie(item)
+    increase_quality_of(item)
+    increase_quality_of(item) if expired?(item)
   end
 end
 
