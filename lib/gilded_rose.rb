@@ -9,12 +9,12 @@ class GildedRose
       next if item.name == "Sulfuras, Hand of Ragnaros"
       item.sell_in = item.sell_in - 1
       case item.name
-      when "Aged Brie", "Backstage passes to a TAFKAL80ETC concert"
+      when 'Backstage passes to a TAFKAL80ETC concert'
         increase_quality_of(item)
-        if item.name == "Backstage passes to a TAFKAL80ETC concert"
-          increase_quality_of(item) if item.sell_in < 11
-          increase_quality_of(item) if item.sell_in < 6
-        end
+        increase_quality_of(item) if item.sell_in < 11
+        increase_quality_of(item) if item.sell_in < 6
+      when "Aged Brie"
+        increase_quality_of(item)
       else
         reduce_quality_of(item)
       end
