@@ -14,8 +14,7 @@ class GildedRose
       when "Aged Brie"
         update_aged_brie(item)
       else
-        reduce_quality_of(item)
-        reduce_quality_of(item) if expired?(item)
+        update_normal_item(item)
       end
     end
   end
@@ -46,6 +45,11 @@ class GildedRose
   def update_aged_brie(item)
     increase_quality_of(item)
     increase_quality_of(item) if expired?(item)
+  end
+
+  def update_normal_item(item)
+    reduce_quality_of(item)
+    reduce_quality_of(item) if expired?(item)
   end
 end
 
