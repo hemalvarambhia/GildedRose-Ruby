@@ -55,7 +55,7 @@ describe 'Aged Brie' do
 
   private
   
-  def an_aged_brie(sell_in: 4, quality: rand(0..50))
+  def an_aged_brie(sell_in: 4, quality: 25)
     Item.new('Aged Brie', sell_in, quality)
   end
 end

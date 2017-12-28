@@ -65,7 +65,7 @@ describe 'Normal Item' do
 
   private
 
-  def a_normal_item(sell_in: rand(1..100), quality: rand(5..50))
+  def a_normal_item(sell_in: 30, quality: 25)
     Item.new('Normal Item', sell_in, quality)
   end
 end
