@@ -20,7 +20,9 @@ class GildedRose
       item.sell_in = item.sell_in - 1
 
       if expired?(item)
-        if item.name != "Aged Brie"
+        if item.name == "Aged Brie"
+          increase_quality_of(item)
+        else
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
             if item.name != "Sulfuras, Hand of Ragnaros"
               reduce_quality_of(item)
@@ -28,8 +30,6 @@ class GildedRose
           else
             item.quality = 0
           end
-        else
-          increase_quality_of(item)
         end
       end
     end
