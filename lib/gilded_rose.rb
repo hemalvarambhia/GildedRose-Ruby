@@ -24,9 +24,7 @@ class GildedRose
           increase_quality_of(item)
         else
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            if item.name != "Sulfuras, Hand of Ragnaros"
-              reduce_quality_of(item)
-            end
+            reduce_quality_of(item)
           else
             item.quality = 0
           end
