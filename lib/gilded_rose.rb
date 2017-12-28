@@ -11,7 +11,7 @@ class GildedRose
         # NO OP
       when 'Backstage passes to a TAFKAL80ETC concert'
         update_backstage_passes(item)
-      when "Aged Brie"
+      when 'Aged Brie'
         update_aged_brie(item)
       else
         update_normal_item(item)
