@@ -121,7 +121,7 @@ describe 'Backstage passes to a TAFKAL80ETC concert' do
 
   private
 
-  def a_backstage_pass(sell_in: 12, quality: rand(0..50))
+  def a_backstage_pass(sell_in: 12, quality: 35)
     Item.new('Backstage passes to a TAFKAL80ETC concert', sell_in, quality)
   end
 end
